@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebSite.Models.Content.PartnersViewModel>
+
+@{
+    ViewData["Title"] = "Partners";
+}
+
+<h2>Partners</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th hidden ="hidden">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th hidden ="hidden">
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th hidden ="hidden">
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activities)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHidden)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td hidden ="hidden">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td hidden ="hidden">
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td hidden ="hidden">
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activities)
+            </td>
+            <td>
+                <img class="img-thumbnail" src="@item.Picture" />
+                @*@Html.DisplayFor(modelItem => item.Picture)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHidden)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |                
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

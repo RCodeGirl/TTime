@@ -1,0 +1,399 @@
+﻿@using Microsoft.AspNetCore.Mvc.RazorPages
+@model WebSite.Models.Content.PageMenuItemViewModel
+@{
+    ViewBag.Title = Model.Page.MetaTitle;
+    ViewBag.Keywords = Model.Page.MetaKeywords;
+    ViewBag.Description = Model.Page.MetaDescription;
+}
+
+<body>
+
+    <div id="main-container">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <ul class="breadcrumb">
+
+                            <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+                            @if (Model.MenuItem.ParentId == null)
+                            {
+                                <li>@Model.MenuItem.Name</li>
+
+                            }
+                            else
+                            {
+                                @if (Model.MenuItem.Parent.ParentId == null)
+                                 {
+                                     <li><a href="Page?stringKey=@Model.MenuItem.Parent.StringKey">@Model.MenuItem.Parent.Name </a></li>
+                                     <li>@Model.MenuItem.Name</li>
+
+                                 }
+                                 else
+                                 {
+
+                                     <li><a href="Page?stringKey=@Model.MenuItem.Parent.Parent.StringKey">@Model.MenuItem.Parent.Parent.Name </a></li>
+                                     <li><a href="Page?stringKey=@Model.MenuItem.Parent.StringKey">@Model.MenuItem.Parent.Name </a></li>
+                                     <li>@Model.MenuItem.Name</li>
+                                 }
+
+
+
+
+                            }
+
+
+
+                        </ul>
+
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+
+
+            <div id="page-content">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            @Html.Raw(Model.Page.Content)
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @if (Model.Page.StringKey == "AboutCompany")
+        {
+        <div class="container">
+
+            <div class="col-sm-4">
+
+                <div class="counter">
+
+                    <div class="counter-value" data-value="78300"></div>
+                    <div class="counter-details">Переведено страниц</div>
+
+                </div><!-- counter -->
+
+
+            </div><!-- col -->
+            <div class="col-sm-4">
+
+                <div class="counter">
+
+                    <div class="counter-value" data-value="1250"></div>
+                    <div class="counter-details">Довольных клиентов</div>
+
+                </div><!-- counter -->
+
+            </div><!-- col -->
+            <div class="col-sm-4">
+
+                <div class="counter">
+
+                    <div class="counter-value" data-value="5"></div>
+                    <div class="counter-details">Сколько лет мы работаем </div>
+
+                </div><!-- counter -->
+
+            </div><!-- col -->
+
+
+        </div><!-- container -->
+        <section class="full-section dark-section " id="section-9">
+            <div class="full-section-container">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="headline headline-animation">
+                                <h2>
+                                    СЕГОДНЯ ПЕРЕВОД С ЯЗЫКА НА ЯЗЫК –<br>
+                                    ЭТО ОЧЕНЬ БЫСТРО, ЛЕГКО И ПО НИЗКОЙ ЦЕНЕ!
+
+                                </h2>
+                            </div><!-- headline -->
+                        </div><!-- col -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="text-center no-margin-bottom">
+                                <strong>
+                                    <a type="button" class="btn btn-sm" asp-action="Index" asp-controller="CallBack"> Заказать перевод</a>
+                                </strong>
+                            </h2>
+                        </div><!-- portfolio-item-hover -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+            </div><!-- full-section-container -->
+        </section><!-- full-section -->
+        }
+        @if (Model.Page.StringKey == "Services")
+        {
+
+        <section class="full-section dark-section " id="section-9">
+            <div class="full-section-container">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="headline headline-animation">
+                                <h2>
+                                    В СВОЕЙ РАБОТЕ МЫ СОБЛЮДАЕМ ДВА ПРИНЦИПА –<br>
+                                    КАЧЕСТВЕННОЕ ВЫПОЛНЕНИЕ ЗАКАЗОВ И СОБЛЮДЕНИЕ УСТАНОВЛЕННЫХ СРОКОВ!
+
+                                </h2>
+                            </div><!-- headline -->
+                        </div><!-- col -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="text-center no-margin-bottom">
+                                <strong>
+                                    <a type="button" class="btn btn-sm" asp-action="Index" asp-controller="CallBack"> Заказать перевод</a>
+                                </strong>
+                            </h2>
+                        </div><!-- portfolio-item-hover -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+            </div><!-- full-section-container -->
+        </section><!-- full-section -->
+
+        }
+        @if (Model.Page.StringKey == "Otzivi")
+        {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="isotope col-3 gutter">
+                        @foreach (var item in Model.Otzivi)
+                            {
+                        <div class="isotope-item categ-2 categ-4">
+
+                            <div class="portfolio-item">
+
+                                <div class="portfolio-item-thumbnail">
+
+                                    <img src="@item.ImgPreview" alt="">
+
+                                    <div class="portfolio-item-hover">
+
+                                        <a class="fancybox zoom-action" data-fancybox="portfolio" href="@item.ImgPreview"><img src="@item.ImgPreview" /></a>
+
+                                    </div><!-- portfolio-item-hover -->
+
+                                </div><!-- portfolio-item-thumbnail -->
+
+                            </div><!-- portfolio-item -->
+
+                        </div><!-- isotope-item -->
+                            }
+
+
+                    </div><!-- isotope -->
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- container -->
+        }
+        @if (Model.Page.StringKey == "Questions")
+        {
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-offset-4 col-sm-12">
+                    <main>
+
+                        <div class="process-steps">
+
+
+                            <div class="step active " style="display: none">
+
+                                <a href="#">Может ли Ваше бюро гарантировать то, что перевод будет качественным?</a>
+
+                                <div class="step-details">
+
+                                    <p>
+                                        Наше бюро представляет собой команду узкоспециализированных дипломированных специалистов,
+                                        которые имеют многолетний опыт переводческой деятельности. Каждый сотрудник прошел строгий
+                                        конкурсный отбор и выполняет перевод, соответствующий всем требованиям действующего
+                                        законодательства. Переводчики не только отлично знают правила иностранного языка, но и хорошо разбираются
+                                        в юридических тонкостях оформления переводов, а также гарантируют соблюдение языковых норм,
+                                        точность формулировок, корректный перевод аббревиатур и условных обозначений. Профессиональный
+                                        подход является гарантией того, что заказчик получит качественный перевод, который будет иметь полную юридическую силу.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            @foreach (var item in Model.Question)
+                                {
+
+                            <div class="step">
+
+                                <a href="#">@item.question</a>
+
+                                <div class="step-details">
+
+                                    <p>
+                                        @item.Answer
+                                    </p>
+
+                                </div><!-- step-details -->
+
+
+
+                            </div>
+ <!-- step -->
+                                }
+
+
+
+                        </div><!-- process-steps -->
+
+
+
+
+                    </main>
+
+
+
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </div>
+ <!-- container -->
+        }
+
+
+    </div>
+
+
+<style>
+    #section-9 {
+        padding: 42px 10px 31px !important;
+        background-color: #000000d4!important;
+    }
+
+    .headline:after {
+        top: -68% !important;
+    }
+    .process-steps .step > a:before {
+        border-left: 2px solid #ffffff !important;
+        border: 7px solid rgb(255 255 255) !important;
+    }
+
+    .process-steps .step:before {
+        border-left: 2px solid #ffffff !important;
+        border: 4px solid #ffffff !important;
+    }
+
+    .process-steps .step:after {
+        border-left: 2px solid #ffffff !important;
+    }
+
+
+    .col-sm-5 {
+        width: 45.666667% !important;
+    }
+
+    .fa-exclamation:before {
+        color: orange !important;
+        font-size: 18px !important;
+    }
+
+    button, input[type="reset"], input[type="submit"], input[type="button"] {
+        background: #d88656 !important;
+    }
+
+    .portfolio-item-hover {
+        background-color: rgb(241 168 140 / 56%) !important;
+    }
+
+    img {
+        vertical-align: initial !important;
+    }
+
+    .widget-contact ul li.email:before, .widget-contact ul li.phone:before, .widget-contact ul li.address:before {
+        color: #f3930c !important;
+    }
+
+    .title:after {
+        border-bottom: 2px solid #f5830e !important;
+    }
+
+    .tabs.style-1 .nav-tabs > li.active > a, .tabs.style-1 .nav-tabs > li.active > a:hover, .tabs.style-1 .nav-tabs > li.active > a:focus {
+        border-top: 2px solid #fc9124;
+    }
+
+    .btn {
+        background-color: #e05d00 !important;
+        margin-bottom: 0px !important;
+    }
+
+    .service-box.style-1 > i {
+        color: #d77d20f0 !important;
+    }
+
+    #section-9 {
+        padding: 15px 0 0px !important;
+        margin-top: 0 !important;
+    }
+
+    .text-box {
+        background-color: #fce6b5 !important;
+        color: #333 !important;
+    }
+
+    .text-box.default {
+        background-color: #e9edf0 !important;
+    }
+
+    #page-content {
+        padding-bottom: 0px !important;
+    }
+
+    .counter-value:after {
+        border-bottom: 4px solid #e08600 !important;
+    }
+
+    .headline:after {
+        border-left: 2px solid #e07c00 !important;
+    }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        background-color: #9f9f9f !important;
+    }
+
+    .nav-tabs > li > a {
+        background-color: #e7741e !important;
+    }
+
+    .container {
+        width: 1318px !important;
+    }
+/*        img {
+                max-width: 73% !important;
+            }*/
+    </style>
+
+
+</body>
+

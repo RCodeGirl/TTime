@@ -1,0 +1,249 @@
+﻿@model WebSite.Models.Home.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+</head>
+<body>
+    <!-- CONTENT -->
+    <div id="page-content">
+        <div class="rev_slider_wrapper">
+            <div class="rev_slider" data-version="5.0">
+                <ul>
+                    @foreach (var item in Model.Sliders)
+                    {
+                        <li data-transition="fade">
+
+                            @*<img src=@item.Image alt="">*@
+
+                            <div class="tp-caption"
+                                 data-x="center"
+                                 data-y="center"
+                                 data-speed="700"
+                                 data-start="1200"
+                                 data-transform_in="o:0;s:500;"
+                                 data-transform_out="o:0;s:500;">
+                                <img src=@item.Image alt="">
+                            </div>
+
+                        </li>
+                    }
+
+
+                </ul>
+            </div><!-- rev_slider -->
+        </div><!-- rev_slider_wrapper -->
+        <div class="container">
+            @Html.Raw(@Model.PageView.Content)
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="headline">
+
+                        <h2>5 ПРИЧИН РАБОТАТЬ С НАМИ</h2>
+
+
+                    </div><!-- headline -->
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- container -->
+        <br>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="tabs style-2">
+
+                        <ul class="nav nav-tabs">
+                            @{int u = 1; }
+                            @foreach (var item in Model.Articles)
+                            {
+
+                                <li class="js-reason"><a class="button orange" href="#tab-@item.StringKey" data-toggle="tab">@u</a></li>
+                                u++;
+                            }
+                        </ul>
+
+                        <div class="tab-content">
+
+                            @foreach (var item in Model.Articles)
+                            {
+                                <div class="tab-pane fade js-reason-desc" id="tab-@item.StringKey">
+
+                                    <div class="row">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="title">
+                                                <h4>@item.Title</h4>
+                                            </div><!-- title -->
+
+                                            <br>
+
+                                            <p>
+                                                @item.Description
+                                            </p>
+
+                                            <br>
+
+
+                                        </div><!-- col -->
+                                        <div class="col-sm-6">
+
+                                            <p><img src="@item.ImgPreview" style="width: 500px" alt=""></p>
+
+                                        </div><!-- col -->
+                                    </div><!-- row -->
+
+                                </div><!-- tab-pane -->
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="full-section dark-section" id="section-9">
+            <div class="full-section-container">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div >
+                                <h2>
+                                    ПЕРЕВОД – ЭТО ПРОСТО, ЕСЛИ ИМ ЗАНИМАЮТСЯ ПРОФЕССИОНАЛЫ!
+                                </h2>
+                            </div><!-- headline -->
+                        </div><!-- col -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="text-center no-margin-bottom">
+                                <strong>
+                                    <a type="button" class="btn btn-sm" asp-action="Index" asp-controller="CallBack"> Заказать перевод</a>
+                                </strong>
+                            </h2>
+                        </div><!-- portfolio-item-hover -->
+                    </div><!-- row -->
+                </div><!-- container -->
+
+            </div><!-- full-section-container -->
+        </section><!-- full-section -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="headline">
+
+                        <h2>НАМ ДОВЕРЯЮТ</h2>
+                        <p>Наши Клиенты</p>
+
+                    </div><!-- headline -->
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- container -->
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="owl-carousel logos-slider">
+                        @foreach (var partner in Model.Partners)
+                        {
+
+                            if (partner.Url == null)
+                            {
+                                <div><img src=@partner.Picture alt="" style="height:100px;"></div>
+                            }
+                            else
+                            {
+                                <div><img src=@partner.Picture alt=@partner.Url style="height:100px;"></div>
+                            }
+
+
+                        }
+
+
+                    </div><!-- logos-slider -->
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </div>
+    <br><br>
+    <style>
+        .rev_slider li.tp-revslider-slidesli {
+            position: absolute !important;
+            top: -111px !important;
+        }
+
+        .tp-leftarrow.custom, .tp-rightarrow.custom {
+            top: 35% !important;
+        }
+
+        .tp-leftarrow.custom, .tp-rightarrow.custom {
+            top: 35% !important;
+        }
+
+        .tp-bullets {
+            top: 77% !important;
+        }
+        .btn {
+            background-color: #f4841e !important;
+        }
+        .tabs.style-2 .nav-tabs > li > a:hover, .tabs.style-2 .nav-tabs > li.active > a, .tabs.style-2 .nav-tabs > li.active > a:hover, .tabs.style-2 .nav-tabs > li.active > a:focus {
+            background-color: #f4841e !important;
+        }
+        
+      
+             .rev_slider_wrapper {
+            margin-bottom: -127px !important;
+        }
+        #section-9 {
+            background-color: #181819eb!important;
+        }
+        .tp-bullets.custom .tp-bullet:hover, .tp-bullets.custom .tp-bullet.selected {
+            background-color: #f4841e !important;
+        }
+        .tp-leftarrow.custom:hover, .tp-rightarrow.custom:hover {
+            background-color: #f5841f!important;
+        }
+    </style>
+
+  
+  
+
+        
+  
+
+</body>
+
+</html>
+
+<script src="~/js/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".js-reason").eq(0).addClass("active");
+        $(".js-reason-desc").eq(0).addClass("in active");
+    });
+</script>

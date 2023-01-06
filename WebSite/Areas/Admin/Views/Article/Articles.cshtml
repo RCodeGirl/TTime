@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebSite.Models.Content.ArticleViewModel>
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<h2>Articles</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StringKey)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.Annonse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaKeywords)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgPreview)
+            </th>
+            <th hidden="hidden" >
+                @Html.DisplayNameFor(model => model.ImgLarge)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.IsHidden)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StringKey)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.Annonse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaKeywords)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDescription)
+            </td>
+            <td>
+                <img class="img-thumbnail" src="@item.ImgPreview" />
+                @*@Html.DisplayFor(modelItem => item.ImgPreview)*@
+            </td>
+            
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.ImgLarge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHidden)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |               
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

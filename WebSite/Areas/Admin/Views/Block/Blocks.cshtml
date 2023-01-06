@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebSite.Models.Content.BlockViewModel>
+
+@{
+    ViewData["Title"] = "Blocks";
+}
+
+<h2>Blocks</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.StringKey)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.IsStatic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.IsHidden)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.IsContent)
+            </th>
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.BlockListId)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.BlockList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.StringKey)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.IsStatic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.IsHidden)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.IsContent)
+            </td>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.BlockListId)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.BlockList.Name)
+            </td>
+            <td>
+                <img class="img-thumbnail" src="@item.Img" />
+                @*@Html.DisplayFor(modelItem => item.Picture)*@
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

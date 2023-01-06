@@ -1,0 +1,84 @@
+﻿@model WebSite.Models.Content.BlockViewModel
+
+@{
+    ViewData["Title"] = "Edite";
+}
+
+<h2>Edite</h2>
+
+<h4>BlockViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit"  asp-route-id="@Model.Id" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StringKey" class="control-label"></label>
+                <input asp-for="StringKey" class="form-control" />
+                <span asp-validation-for="StringKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsStatic" /> @Html.DisplayNameFor(model => model.IsStatic)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsHidden" /> @Html.DisplayNameFor(model => model.IsHidden)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Img" class="control-label"></label>
+                <input asp-for="Img" class="form-control" />
+                <span asp-validation-for="Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <input type="file" name="Icon" asp-for="Icon" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsContent" /> @Html.DisplayNameFor(model => model.IsContent)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlockListId"></label>
+                <select asp-for="BlockListId" asp-items="@Model.BlockLists.Select(_=> new SelectListItem { Value = _.Id.ToString(), Text = _.Name})">
+                    <option value="" disabled selected hidden>-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

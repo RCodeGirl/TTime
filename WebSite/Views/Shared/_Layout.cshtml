@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>T-Time БЮРО ПЕРЕВОДОВ ТИРАСПОЛЬ</title>
+
+    <!-- FAVICON AND APPLE TOUCH -->
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-180x180.png">
+    <meta name="msapplication-TileImage" content="mstile.png">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Volkhov:400,400italic">
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="~/assets/assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="~/assets/assets/fonts/fontawesome/css/font-awesome.min.css">
+
+    <!-- FANCYBOX -->
+    <link rel="stylesheet" href="~/assets/assets/plugins/fancybox/jquery.fancybox.min.css">
+
+
+    <!-- REVOLUTION SLIDER -->
+    <link rel="stylesheet" href="~/assets/assets/plugins/revolutionslider/css/settings.css">
+    <link rel="stylesheet" href="~/assets/assets/plugins/revolutionslider/css/layers.css">
+    <link rel="stylesheet" href="~/assets/assets/plugins/revolutionslider/css/navigation.css">
+
+    <!-- OWL Carousel -->
+    <link rel="stylesheet" href="~/assets/assets/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/assets/assets/plugins/owl-carousel/owl.transitions.css">
+
+    <!-- YOUTUBE PLAYER -->
+    <link rel="stylesheet" href="~/assets/assets/plugins/ytplayer/css/jquery.mb.YTPlayer.min.css">
+
+    <!-- ANIMATIONS -->
+    <link rel="stylesheet" href="~/assets/assets/plugins/animations/animate.min.css">
+
+    <!-- CUSTOM & PAGES STYLE -->
+    <link rel="stylesheet" href="~/assets/assets/css/custom.css">
+    <link rel="stylesheet" href="~/assets/assets/css/pages-style.css">
+
+
+</head>
+<body>
+    <div id="main-container">
+        @await Component.InvokeAsync("PageMenu")
+        @*<header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        @await Component.InvokeAsync("PageMenu")
+
+                    </div>
+                </nav>
+            </header>*@
+
+        <div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        @*<a asp-action="Index" asp-controller="CallBack">
+                Заказать звонок
+            </a>*@
+        @await Component.InvokeAsync("LayoutFooter")
+        @*<footer class="border-top footer text-muted">
+                <div class="container">
+                    &copy; 2021 - WebSite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer>*@
+        <!-- PAGE CONTENT -->
+        <!-- GO TOP -->
+    </div><!-- MAIN CONTAINER -->
+    <a id="scroll-up"><i class="fa fa-angle-up"></i></a>
+    <style>
+        #header-sticky {
+            background-color: #d3d3d3 !important;
+        }
+
+        .headline.headline-animation:after {
+            height: 88px !important;
+            transform: rotate( 90deg ) !important;
+        }
+
+        .headline:after {
+            top: 27% !important;
+        }
+
+       
+        .menu li.dropdown ul {
+            background-color: #f5841f;
+        }
+
+        .widget-title:after {
+            border-bottom: 2px solid #f5841f !important;
+        }
+
+        border-bottom:2px solid #e07200 {
+            color: #f5841f !important;
+        }
+
+        #header-top .widget-contact ul li:before {
+            color: #f5841f !important;
+        }
+        .tp-leftarrow.custom:hover, .tp-rightarrow.custom:hover {
+            background-color: #f5841f !important;
+        }
+
+        /* #footer {
+            position: absolute !important;
+            width: 100% !important;
+            padding: 100px 0!important;
+        }*/
+        .headline:after {
+            border-left: 2px solid #f5841f !important;
+        }
+
+        .title:after {
+            border-bottom: 2px solid #f5841f !important;
+        }
+
+        img {
+            max-width: 131%;
+        }
+
+        .tp-bannertimer {
+            background: #ffffff !important;
+        }
+
+        html,
+        body {
+            background-color: #050813 !important;
+        }
+
+        .btn {
+            margin-bottom: 0px !important;
+        }
+
+        .element.style {
+            color: #e5e5e5 !important;
+        }
+
+        .container {
+            width: 1325px !important;
+        }
+
+        #footer a, #footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6 {
+            color: #9f9f9f !important;
+        }
+
+        #scroll-up {
+            background-color: #f5841f !important;
+        }
+
+        .col-sm-offset-4 {
+            margin-left: 1.333333% !important;
+        }
+    </style>
+
+    <!-- jQUERY -->
+    <script src="/assets/assets/plugins/jquery/jquery-2.2.4.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="/assets/assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- VIEWPORT -->
+    <script src="/assets/assets/plugins/viewport/jquery.viewport.js"></script>
+
+    <!-- MENU -->
+    <script src="/assets/assets/plugins/menu/hoverIntent.js"></script>
+    <script src="/assets/assets/plugins/menu/superfish.js"></script>
+
+    <!-- FANCYBOX -->
+    <script src="/assets/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+    <!-- REVOLUTION SLIDER  -->
+    <script src="/assets/assets/plugins/revolutionslider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/assets/assets/plugins/revolutionslider/js/extensions/revolution.extension.video.min.js"></script>
+
+    <!-- OWL Carousel -->
+    <script src="/assets/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+
+    <!-- PARALLAX -->
+    <script src="/assets/assets/plugins/parallax/jquery.stellar.min.js"></script>
+
+    <!-- ISOTOPE -->
+    <script src="/assets/assets/plugins/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/assets/plugins/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- PLACEHOLDER -->
+    <script src="/assets/assets/plugins/placeholders/jquery.placeholder.min.js"></script>
+
+    <!-- CONTACT FORM VALIDATE & SUBMIT -->
+    <script src="/assets/assets/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/assets/assets/plugins/submit/jquery.form.min.js"></script>
+
+    <!-- GOOGLE MAPS -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJB5U3ZU5nnV3ta4t1VSz92zQi_3Xmmo"></script>
+    <script src="/assets/assets/plugins/googlemaps/gmap3.min.js"></script>
+
+    <!-- CHARTS -->
+    <script src="/assets/assets/plugins/charts/jquery.easypiechart.min.js"></script>
+
+    <!-- COUNTER -->
+    <script src="/assets/assets/plugins/counter/jQuerySimpleCounter.js"></script>
+
+    <!-- YOUTUBE PLAYER -->
+    <script src="/assets/assets/plugins/ytplayer/jquery.mb.YTPlayer.min.js"></script>
+
+    <!-- COUNTDOWN -->
+    <script src="/assets/assets/plugins/countdown/jquery.countdown.min.js"></script>
+
+    <!-- HOVERDIR -->
+    <script src="/assets/assets/plugins/hoverdir/hoverdir.js"></script>
+
+    <!-- ANIMATIONS -->
+    <script src="/assets/assets/plugins/animations/wow.min.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="/assets/assets/js/custom.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

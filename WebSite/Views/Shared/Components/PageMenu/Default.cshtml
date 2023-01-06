@@ -1,0 +1,181 @@
+﻿<header>
+    <div id="header-top">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-10">
+
+                    <div class="widget widget-contact">
+
+                        <ul>
+                            <li> <b>УСЛУГИ ПРОФЕССИОНАЛЬНОГО ПЕРЕВОДА</b></li>
+                            @foreach (var item in Model.Blocks)
+                            {
+                                if (item.StringKey == "Phone")
+                                {
+                                    <li class="phone">
+                                        <span class="hidden-xs"><b>@item.Description</b></span>
+
+                                    </li>
+                                }
+
+                                if (item.StringKey == "E-mail")
+                                {
+                                    <li class="email">
+                                        <a href="mailto:info@vertiqalteam.com"><b>@item.Description</b></a>
+                                    </li>
+                                }
+
+                                if (item.StringKey == "Adrdess")
+                                {
+                                    <li class="address">
+                                        <a><b>@item.Description</b></a>
+                                    </li>
+                                }
+
+                            }
+                            <li>
+                                <div class="widget widget-social">
+
+                                    <div class="social-media">
+                                        <a class="facebook" href="https://www.facebook.com/profile.php?id=100037137594349"><i class="fa fa-facebook"></i></a>
+                                        <a class="vk" href="https://vk.com/t_time2020"><i class="fa fa-vk"></i></a>
+                                        <a class="instagram" href="https://www.instagram.com/t_time.md/"><i class="fa fa-instagram"></i></a>
+                                        <a class="odnoklassniki" href="https://m.ok.ru/profile/573381842256"><i class="fa fa-odnoklassniki"></i></a>
+
+                                    </div><!-- social-media -->
+
+                                </div><!-- widget-social -->
+                            </li>
+                        </ul>
+
+                    </div><!-- widget-contact -->
+                </div><!-- col -->
+
+                <div class="col-sm-2">
+                    <a class="btn" asp-action="Index" asp-controller="CallBack"><b> Заказать перевод</b></a>
+
+                </div><!-- col -->
+
+            </div><!-- row -->
+        </div><!-- container -->
+
+    </div><!-- header-top -->
+
+
+    <div id="header">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+
+                    <!-- LOGO -->
+                    <div id="logo">
+                        <a asp-action="Index" asp-controller="Home">
+                            @foreach (var item in Model.Blocks)
+                            {
+
+                                if (item.StringKey == "Logo")
+                                {
+                                    <img src=@item.Img alt="">
+                                }
+
+
+                            }
+
+                        </a>
+                    </div><!-- LOGO -->
+
+                </div><!-- col -->
+
+                <div class="col-sm-10">
+
+                    <!-- MENU -->
+                    <nav>
+
+                        <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
+
+                        <ul class="menu clearfix" id="menu">
+
+
+                            @foreach (var menu in Model.MenuItems)
+                            {
+                                if (menu.Parent == null)
+                                {
+                                    if (menu.Childs.Count == 0)
+                                    {
+                                        <li class="dropdown">
+                                            <a asp-route-stringKey="@menu.StringKey" asp-route-customUrl="@menu.CustomUrl" asp-route-id="@menu.Id"
+                                               asp-controller="@menu.Controller" asp-action="@menu.Action" style="margin-right: -5px !important;">@menu.Name</a>
+                                        </li>
+
+                                    }
+                                    else
+                                    {
+                                        <li class="dropdown">
+                                            <a asp-route-stringKey="@menu.StringKey" asp-route-customUrl="@menu.CustomUrl" asp-route-id="@menu.Id"
+                                               asp-controller="@menu.Controller" asp-action="@menu.Action" style="margin-right: -5px !important;">@menu.Name</a>
+                                            <ul>
+                                                @foreach (var item in menu.Childs)
+                                                {
+                                                    if (item.Childs.Count == 0)
+                                                    {
+                                                        <li class="dropdown">
+                                                            <a asp-controller="@item.Controller" asp-action="@item.Action"
+                                                               asp-route-stringKey="@item.StringKey" asp-route-id="@item.Id">@item.Name</a>
+                                                        </li>
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <li class="dropdown">
+                                                            <a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                @item.Name
+                                                            </a>
+                                                            <ul>
+                                                                @foreach (var i in item.Childs)
+                                                                {
+                                                                    <li class="dropdown">
+                                                                        <a asp-route-stringKey="@i.StringKey" asp-route-customUrl="@i.CustomUrl" asp-route-id="@i.Id"
+                                                                           asp-controller="@i.Controller" asp-action="@i.Action" style="margin-right: -5px !important;">@i.Name</a>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                }
+                            }
+
+                        </ul>
+                    </nav>
+
+                </div><!-- col -->
+                @*<a type="button" class="btn btn-sm" asp-action="Index" asp-controller="CallBack"> Заказать перевод</a>*@
+
+
+
+
+            </div><!-- row -->
+        </div><!-- container -->
+
+    </div><!-- 	header -->
+</header><!-- HEADER -->
+<style>
+    #header-top {
+        background-color: #242424b3;
+    }
+
+    .menu > li > a:after {
+        border-bottom: 2px solid #e08600 !important;
+    }
+
+    .menu li a {
+        color: #0c0c0c;
+    }
+</style>

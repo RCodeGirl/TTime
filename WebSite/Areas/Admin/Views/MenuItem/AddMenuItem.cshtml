@@ -1,0 +1,125 @@
+﻿@model WebSite.Models.Navigation.MenuItemViewModel
+
+@{
+    ViewData["Title"] = "AddMenuItem";
+}
+
+<h2>AddMenuItem</h2>
+
+<h4>MenuItemViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMenuItem" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Order" class="control-label"></label>
+                <input asp-for="Order" class="form-control" />
+                <span asp-validation-for="Order" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group" >
+            <label asp-for="MenuId" class="control-label"></label>
+            <input asp-for="MenuId" class="form-control" />
+            <span asp-validation-for="MenuId" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="MenuId"></label>
+                <select asp-for="MenuId" asp-items="@Model.Menus.Select(_=> new SelectListItem { Value = _.Id.ToString(), Text = _.Name, Selected = Model.MenuId == _.Id})">
+                    <option value="" disabled selected hidden>-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StringKey" class="control-label"></label>
+                <input asp-for="StringKey" class="form-control" />
+                <span asp-validation-for="StringKey" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Controller" class="control-label"></label>
+                <input asp-for="Controller" class="form-control" />
+                <span asp-validation-for="Controller" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Action" class="control-label"></label>
+                <input asp-for="Action" class="form-control" />
+                <span asp-validation-for="Action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="isExternal" /> @Html.DisplayNameFor(model => model.isExternal)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomUrl" class="control-label"></label>
+                <input asp-for="CustomUrl" class="form-control" />
+                <span asp-validation-for="CustomUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group"hidden="hidden">
+                    <label asp-for="IconClass" class="control-label"></label>
+                    <input asp-for="IconClass" class="form-control" />
+                    <span asp-validation-for="IconClass" class="text-danger"></span>
+                </div>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsHidden" /> @Html.DisplayNameFor(model => model.IsHidden)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageId"></label>
+                <select asp-for="PageId" asp-items="@Model.Pages.Select(_=> new SelectListItem { Value = _.Id.ToString(), Text = _.Name, Selected = Model.PageId == _.Id})">
+                    <option value="" disabled selected hidden>-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentId"></label>
+                <select asp-for="ParentId" asp-items="@Model.MenuItems.Select(_=> new SelectListItem { Value = _.Id.ToString(), Text = _.Name})">
+                    <option value="" disabled selected hidden>-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="file" name="Icon" asp-for="Icon" class="form-control" />
+            </div>
+            @*<div class="form-group">
+            <label asp-for="PageId" class="control-label"></label>
+            <input asp-for="PageId" class="form-control" />
+            <span asp-validation-for="PageId" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form-group">
+    <input type="submit" asp-action="MenuItems" value="Back" class="btn btn-primary" />
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

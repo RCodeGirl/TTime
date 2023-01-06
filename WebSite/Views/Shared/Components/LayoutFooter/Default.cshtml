@@ -1,0 +1,124 @@
+﻿<!-- FOOTER -->
+<footer>
+    <div id="footer">
+
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.BlocLists)
+                {
+
+                    <div class="col-sm-4">
+
+                        <div class="widget widget-pages">
+
+                            <h5 class="widget-title">@item.Name</h5>
+                            @if (item.StringKey == "Sections")
+                            {
+                                <ul>
+                                    @foreach (var about in Model.MenuItems)
+                                    {
+                                        <li><span><i class="text"></i><a asp-controller="@about.Controller" asp-action="@about.Action" asp-route-stringKey="@about.Page.StringKey">@about.Name</a></span></li>
+                                    }
+                                </ul>
+                            }
+
+
+                        </div><!-- widget-pages -->
+                        <div class="widget widget-contact">
+                            @if (item.StringKey == "contacts")
+                            {
+                                <ul>
+                                    @foreach (var block in item.Blocks)
+                                    {
+                                        if (block != null)
+                                        {
+
+                                            if (block.StringKey == "Adrdess")
+                                            {
+                                                <li class="address"><span>@block.Description</span></li>
+                                            }
+                                            if (block.StringKey == "Phone")
+                                            {
+                                                <li class="phone"><span>@block.Description</span></li>
+                                            }
+                                            if (block.StringKey == "E-mail")
+                                            {
+                                                <li class="email"><span>@block.Description</span></li>
+                                            }
+                                            if (block.StringKey == "time")
+                                            {
+                                                <li class="glyphicon glyphicon-time"><span>@block.Description</span></li>
+                                            }
+                                            if (block.StringKey == "info")
+                                            {
+                                                <li class="fa fa-exclamation"><span>@block.Description</span></li>
+                                            }
+
+                                        }
+
+
+                                    }
+                                </ul>
+                            }
+                        </div>
+                        <div class="widget-text">
+                            @if (item.StringKey == "About")
+                            {   <span>
+                                    Если вы ищете бюро переводов по умеренной цене — выбирайте нас, профессионалов своего дела!
+                                    Вы можете связаться с нами по телефону, через мессенджеры, по электронной почте или с помощью
+                                    электронной формы заявки на нашем сайте — будем рады ответить на все интересующие Вас вопросы!
+
+                                </span>
+                            }
+                        </div>
+
+
+                    </div>
+                    <!-- col -->
+                }
+
+
+            </div><!-- row -->
+        </div><!-- container -->
+
+    </div><!-- footer -->
+
+
+</footer><!-- FOOTER -->
+<style>
+    .btn, .btn:focus, .btn:active, .btn:active:hover {
+        background-color: #f4841e !important;
+    }
+
+    .fa {
+        color: white;
+    }
+
+    .fa-exclamation:before {
+        color: #f4841e !important;
+    }
+
+    #footer .widget-contact ul li span {
+        color: #9f9f9f;
+    }
+
+    .widget-contact ul li.email:before, .widget-contact ul li.phone:before, .widget-contact ul li.address:before {
+        color: #f4841e !important;
+    }
+
+    .glyphicon-time:before {
+        color: #f4841e !important;
+    }
+
+    .widget {
+        margin-bottom: 0px !important;
+    }
+
+    .glyphicon {
+        color: white;
+    }
+
+    .widget-contact ul li span {
+        display: inline !important;
+    }
+</style>
